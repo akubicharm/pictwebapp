@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>file input click() demo</title>
+
+  <script>
+    function handleFiles(files)
+    {
+      var file = files[ 0 ];
+
+      var img = document.createElement("img");
+      img.src = window.URL.createObjectURL(file);
+      img.height = 60;
+      img.onload = function (e)
+      {
+        window.URL.revokeObjectURL(this.src);
+      }
+      document.getElementById("image").appendChild(img);
+    }
+  </script>
+</head>
+
+<body>
+  <form action="/upload" method="post" accept="image/*" enctype="multipart/form-data">
+    <input type="file" name="uploadFile" onchange="handleFiles(this.files)" />
+    <input type="submit" value="submit" />
+    <div id="image"></div>
+  </form>
+</body>
+
+</html>
