@@ -7,6 +7,7 @@
 PythonのFlaskフレームワークを利用。
 
 http://flask.pocoo.org/
+http://flask.pocoo.org/docs/1.0/installation/
 
 ## 環境構築
 
@@ -43,4 +44,17 @@ export FLASK_DEBUG=1
 2. 実行
 ```
 flask run
+```
+
+
+## コンテナバージョン
+1. Docker イメージの作成
+```
+cd src
+docker build -t pictweb -f ../docker/Dockerfile .
+```
+
+1. 実行
+```
+docker run -it -p 80:80  pictweb
 ```
