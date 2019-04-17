@@ -3,7 +3,8 @@ import os
 from datetime import datetime
 app = Flask(__name__)
 
-UPLOAD_DIR="/var/tmp"
+#UPLOAD_DIR="/var/tmp"
+UPLOAD_DIR=os.environ['UPLOAD_DIR']
 
 @app.route('/')
 def hello_world():
@@ -22,5 +23,4 @@ def upload():
       
   saveFileName = datetime.now().strftime("%Y%m%d_%H%M%S_") + fileName 
   file.save(os.path.join(UPLOAD_DIR, saveFileName))
-
   return render_template('fileupload.html')
